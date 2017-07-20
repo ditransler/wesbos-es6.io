@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrow functions</title>
+</head>
+<body>
+    <script>
+        const race = '100m Dash';
+        const winners = ['Hunter Gath', 'Singa Song', 'Imda Bos'];
+
+        /**
+         * 1. Make an arrow function implicitly return an object literal by wrapping it in brackets
+         * 2. Remove redundant duplication if a property name is the same as a variable name (the 'race' variable in the example)
+         **/
+        const winnersObj = winners.map((winner, i) => ({name: winner, race, place: i + 1}));
+
+        console.table(winnersObj);
+    </script>
+</body>
+</html>
