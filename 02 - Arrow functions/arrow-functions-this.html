@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>This - Arrow functions</title>
+    <style>
+        .wrap {
+            align-items: center;
+            color: white;
+            display: flex;
+            font-family: sans-serif;
+            font-weight: 100;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .box {
+            background: #000 url("https://unsplash.it/1500/1500?image=560&blur=0.5") center fixed no-repeat;
+            height: 50px;
+            padding: 50px;
+            position: relative;
+            transition: width 0.2s, height 0.6s;
+            width: 50px;
+        }
+
+        .box--opening {
+            height: 500px;
+            width: 500px;
+        }
+
+        .box__title {
+            font-size: 100px;
+            position: absolute;
+            top: 0;
+            transform: translateX(-200%);
+            transition: all 0.5s;
+            width: 100%;
+        }
+
+        .box__social {
+            bottom: 0;
+            position: absolute;
+            transform: translateX(200%);
+            transition: all 0.5s;
+            width: 100%;
+        }
+
+        .box--opened .box__title,
+        .box--opened .box__social {
+            transform: translateX(0%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">
+            <h2 class="box__title">Wes Bos</h2>
+            <p class="box__social">@wesbos</p>
+        </div>
+    </div>
+
+    <script>
+        const box = document.querySelector('.box');
+
+        box.addEventListener('click', function onBoxClick() {
+            let firstClass = 'box--opening';
+            let secondClass = 'box--opened';
+
+            if (this.classList.contains(firstClass)) {
+                // switch them
+                [firstClass, secondClass] = [secondClass, firstClass];
+            }
+
+            this.classList.toggle(firstClass);
+
+            /**
+             * Arrow function 'remembers' this
+             * at the point where it was declared
+             **/
+            setTimeout(() => {
+                this.classList.toggle(secondClass);
+            }, 250);
+        });
+    </script>
+</body>
+</html>
