@@ -28,6 +28,10 @@
             width: 500px;
         }
 
+        .box--shadow {
+            box-shadow: 2px 3px 10px 1px rgba(0, 0, 0, 0.4);
+        }
+
         .box__title {
             font-size: 100px;
             position: absolute;
@@ -49,7 +53,6 @@
         .box--opened .box__social {
             transform: translateX(0%);
         }
-
     </style>
 </head>
 <body>
@@ -82,6 +85,55 @@
                 this.classList.toggle(secondClass);
             }, 250);
         });
+
+        /**
+         * There're examples that show
+         * when you DON'T need an arrow function
+         **/
+
+        // When you really need `this`
+        box.addEventListener('click', function onBoxClick2() {
+            console.log(this);
+            this.classList.toggle('box--shadow');
+        });
+
+        // When you need a method to bind to an object
+        const person = {
+            points: 23,
+            score() {
+                console.log(this);
+                this.points++;
+            }
+        };
+
+        person.score();
+
+        // When you need to add a prototype method
+        class Car {
+            constructor(make, colour) {
+                this.make = make;
+                this.colour = colour;
+            }
+        }
+
+        const beemer = new Car('bmw', 'blue');
+
+        Car.prototype.summarize = function() {
+            return `This car is a ${this.make} in the colour ${this.colour}`;
+        };
+
+        beemer.summarize();
+
+        // When you need arguments object
+        const logChildrenOrder = function() {
+            const children = Array.from(arguments);
+
+            return children.map((child, i) => {
+                return `${child} was child #${i + 1}`;
+            });
+        };
+
+        console.log(logChildrenOrder('James', 'Bob', 'Lew', 'Kate'));
     </script>
 </body>
 </html>
