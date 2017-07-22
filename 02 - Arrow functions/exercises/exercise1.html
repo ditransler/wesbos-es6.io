@@ -42,10 +42,8 @@
             // map to an array of seconds
             .map(time => {
                const timeArr = time.split(':');
-               const secondsFromHours = +timeArr[0] * 60 * 60;
-               const secondsFromMinutes = +timeArr[1] * 60;
 
-               return secondsFromHours + secondsFromMinutes;
+               return (+timeArr[0] * 60) + (+timeArr[1]);
             })
             // reduce to get total
             .reduce((initialValue, currentValue) => initialValue + currentValue, 0);
