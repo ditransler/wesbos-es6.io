@@ -32,7 +32,7 @@
 
         // Select all the list items on the page and convert to array
         const videoList = document.getElementById('video-list');
-        const videos = videoList.querySelectorAll('li');
+        const videos = videoList.querySelectorAll('[data-time]');
 
         const flexboxVideosTotalTime = Array.from(videos)
             // Filter for only the elements that contain the word 'flexbox'
