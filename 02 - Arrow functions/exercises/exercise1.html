@@ -36,7 +36,7 @@
 
         const flexboxVideosTotalTime = Array.from(videos)
             // Filter for only the elements that contain the word 'flexbox'
-            .filter(video => ~(video.textContent.toLowerCase()).indexOf('flexbox'))
+            .filter(video => video.textContent.toLowerCase().includes('flexbox'))
             // map down to a list of time strings
             .map(video => video.dataset.time)
             // map to an array of seconds
