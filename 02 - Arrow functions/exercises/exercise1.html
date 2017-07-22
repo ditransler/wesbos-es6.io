@@ -34,27 +34,24 @@
         const videoList = document.getElementById('video-list');
         const videos = videoList.querySelectorAll('li');
 
-        // Filter for only the elements that contain the word 'flexbox'
-        const flexboxVideos = Array.from(videos)
-            .filter(video => ~(video.textContent.toLowerCase()).indexOf('flexbox'));
+        const flexboxVideosTotalTime = Array.from(videos)
+            // Filter for only the elements that contain the word 'flexbox'
+            .filter(video => ~(video.textContent.toLowerCase()).indexOf('flexbox'))
+            // map down to a list of time strings
+            .map(video => video.dataset.time)
+            // map to an array of seconds
+            .map(time => {
+               const timeArr = time.split(':');
+               const secondsFromHours = +timeArr[0] * 60 * 60;
+               const secondsFromMinutes = +timeArr[1] * 60;
 
-        // map down to a list of time strings
-        const flexboxVideosTime = flexboxVideos.map(video => video.dataset.time);
+               return secondsFromHours + secondsFromMinutes;
+            })
+            // reduce to get total
+            .reduce((initialValue, currentValue) => initialValue + currentValue, 0);
 
-        // map to an array of seconds
-        const flexboxVideosSeconds = flexboxVideosTime.map(time => {
-           const timeArr = time.split(':');
-           const secondsFromHours = +timeArr[0] * 60 * 60;
-           const secondsFromMinutes = +timeArr[1] * 60;
+        console.log(`Flexbox videos total time: ${flexboxVideosTotalTime} seconds`);
 
-           return secondsFromHours + secondsFromMinutes;
-        });
-
-        // reduce to get total
-        const flexboxVideosTotalTime = flexboxVideosSeconds.reduce((initialValue, currentValue) =>
-            initialValue + currentValue, 0);
-
-        console.log(flexboxVideosTotalTime);
         // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
     </script>
 </body>
