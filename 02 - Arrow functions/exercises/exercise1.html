@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excercise 1 - Arrow functions</title>
+</head>
+<body>
+    <ul id="video-list">
+        <li data-time="5:17">Flexbox Video</li>
+        <li data-time="8:22">Flexbox Video</li>
+        <li data-time="3:34">Redux Video</li>
+        <li data-time="5:23">Flexbox Video</li>
+        <li data-time="7:12">Flexbox Video</li>
+        <li data-time="7:24">Redux Video</li>
+        <li data-time="6:46">Flexbox Video</li>
+        <li data-time="4:45">Flexbox Video</li>
+        <li data-time="4:40">Flexbox Video</li>
+        <li data-time="7:58">Redux Video</li>
+        <li data-time="11:51">Flexbox Video</li>
+        <li data-time="9:13">Flexbox Video</li>
+        <li data-time="5:50">Flexbox Video</li>
+        <li data-time="5:52">Redux Video</li>
+        <li data-time="5:49">Flexbox Video</li>
+        <li data-time="8:57">Flexbox Video</li>
+        <li data-time="11:29">Flexbox Video</li>
+        <li data-time="3:07">Flexbox Video</li>
+        <li data-time="5:59">Redux Video</li>
+        <li data-time="3:31">Flexbox Video</li>
+    </ul>
+
+    <script>
+
+        // Select all the list items on the page and convert to array
+        const videoList = document.getElementById('video-list');
+        const videos = videoList.querySelectorAll('li');
+
+        // Filter for only the elements that contain the word 'flexbox'
+        const flexboxVideos = Array.from(videos)
+            .filter(video => ~(video.textContent.toLowerCase()).indexOf('flexbox'));
+
+        // map down to a list of time strings
+        const flexboxVideosTime = flexboxVideos.map(video => video.dataset.time);
+
+        // map to an array of seconds
+        const flexboxVideosSeconds = flexboxVideosTime.map(time => {
+           const timeArr = time.split(':');
+           const secondsFromHours = +timeArr[0] * 60 * 60;
+           const secondsFromMinutes = +timeArr[1] * 60;
+
+           return secondsFromHours + secondsFromMinutes;
+        });
+
+        // reduce to get total
+        const flexboxVideosTotalTime = flexboxVideosSeconds.reduce((initialValue, currentValue) =>
+            initialValue + currentValue, 0);
+
+        console.log(flexboxVideosTotalTime);
+        // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
+    </script>
+</body>
+</html>
