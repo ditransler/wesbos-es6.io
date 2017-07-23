@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iterables & Looping</title>
+</head>
+<body>
+
+    <script>
+        const apple = {
+            color: 'Red',
+            size: 'Medium',
+            weight: 50,
+            sugar: 10
+        };
+
+        /**
+         * Object.entries() is available in ES2017
+         * Meanwhile we can use Object.keys()
+         **/
+        console.group('for...of with Object.keys()');
+
+        for (const prop of Object.keys(apple)) {
+            console.log(`${prop}: ${apple[prop]}`);
+        }
+
+        console.groupEnd();
+
+
+        // Or we can use for...in with .hasOwnProperty()
+        console.group('for...in with .hasOwnProperty()');
+
+        for (const prop in apple) {
+            if (apple.hasOwnProperty(prop)) {
+                console.log(`${prop}: ${apple[prop]}`);
+            }
+        }
+
+        console.groupEnd();
+
+    </script>
+</body>
+</html>
