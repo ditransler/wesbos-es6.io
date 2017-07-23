@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array .from() and .of()</title>
+</head>
+<body>
+    <div class="people">
+        <p>Wes</p>
+        <p>Kait</p>
+        <p>Snickers</p>
+    </div>
+
+    <script>
+        // Just wanted to try to chain querySelector
+        const people = document.querySelector('.people').querySelectorAll('p');
+
+        /**
+         * Array.from() takes the second argument that is a map function
+         **/
+        const peopleArray = Array.from(people, (person) => `This is ${person.textContent};`);
+
+        console.log(peopleArray);
+    </script>
+</body>
+</html>
