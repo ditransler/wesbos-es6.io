@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiple Promises</title>
+</head>
+<body>
+<script>
+    const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
+    const streetCarsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=paris');
+
+    Promise
+        .all([postsPromise, streetCarsPromise])
+        .then(responses => {
+            console.log(responses);
+            /**
+             * Here we aren't getting real data.
+             * That's why we can use another Promise.all()
+             * and convert each response to JSON
+             * response.json() also return a promise
+             **/
+            return Promise.all(responses.map(response => response.json()));
+        })
+        .then(responses => {
+            console.log(responses);
+        })
+        .catch(err => {
+            console.log(Error(err));
+        });
+
+</script>
+</body>
+</html>
