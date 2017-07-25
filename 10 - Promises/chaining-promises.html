@@ -22,13 +22,13 @@
         return new Promise((resolve, reject) => {
             // using setTimeout to mimick a database request
             setTimeout(() => {
-               const post = posts.find(post => post.id === id);
+                const post = posts.find(post => post.id === id);
 
-               if (post) {
-                   resolve(post);
-               } else {
-                   reject(Error('No Post Was Found!'));
-               }
+                if (post) {
+                    resolve(post);
+                } else {
+                    reject(Error('No Post Was Found!'));
+                }
             }, 500);
         });
     }
@@ -57,7 +57,7 @@
         })
         .catch(err => {
             console.error(err);
-        })
+        });
 </script>
 </body>
 </html>

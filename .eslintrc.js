@@ -4,6 +4,7 @@ module.exports = {
         "es6": true
     },
     "extends": "eslint:recommended",
+    "plugins": ["html"],
     "rules": {
         "indent": [
             "error",
@@ -20,6 +21,7 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "no-console": "warn"
     }
 };
