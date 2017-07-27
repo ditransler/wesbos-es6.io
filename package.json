@@ -5,12 +5,13 @@
   "private": true,
   "author": "Dmitriy Beglov",
   "scripts": {
-    "lint:eslint": "./node_modules/.bin/eslint ./**/*",
+    "lint:eslint": "./node_modules/.bin/eslint data.js",
     "precommit": "npm run lint:eslint"
   },
   "devDependencies": {
     "eslint": "^4.3.0",
     "eslint-plugin-html": "^3.1.1",
     "husky": "^0.14.3"
-  }
+  },
+  "dependencies": {}
 }

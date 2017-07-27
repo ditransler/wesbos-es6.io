@@ -1,5 +1,7 @@
 node_modules/*
 .gitignore
 package.json
+package-lock.json
 README.md
 .editorconfig
+_build/*
