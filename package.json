@@ -5,7 +5,7 @@
   "private": true,
   "author": "Dmitriy Beglov",
   "scripts": {
-    "lint:eslint": "./node_modules/.bin/eslint data.js",
+    "lint:eslint": "./node_modules/.bin/eslint ./**/*",
     "precommit": "npm run lint:eslint"
   },
   "devDependencies": {
